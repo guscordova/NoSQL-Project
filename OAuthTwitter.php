@@ -182,9 +182,9 @@ class OAuthTwitter
     //
     private function process_tweet(array $_data)
     {
-        //print_r($_data);
-		print_r("tweet\n");
-		print_r($_data[geo]);
+        print_r($_data);
+		//print_r("tweet\n");
+		//print_r($_data[geo]);
         return true;
     }
 	
