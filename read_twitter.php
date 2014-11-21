@@ -5,12 +5,11 @@ require_once('OAuthTwitter.php');
 require_once('MapJSON.php');
 require_once('Database.php');
 
-
 //Set Access Tokens
 //How to Generate Access Tokens: http://iag.me/socialmedia/how-to-create-a-twitter-app-in-8-easy-steps/
 $settings = array(
-    'consumer_key' => "",
-    'consumer_secret' => "",
+    'consumer_key' => "Y8t0nHfuUnuTs1dvIi7UayjyJ",
+    'consumer_secret' => "5kYbL192weOnZAnHtcceuchZM5x662oQEnOtmIzD3xlLdb1e4w",
     'token' => "",
     'token_secret' => ""
 );
@@ -32,7 +31,7 @@ $response =  $twitter->performRequest($url,$latlonrad,$count);
 
 $json = json_decode($response, true);
 if ($json) {
-	print_r($json);
+	//print_r($json);
 }
 
 $map = new MapJSON();
@@ -45,9 +44,21 @@ $database->connect();
 $database->setKeyspace('bdd');
 
 foreach ($tweetsWithHashtags as $tweet) {
-	$hasCoodinates = !empty($tweet->long);
-	$isRetweet = !empty($tweet->retweetCount);
 	$database->beginBatch();
+	$database->query(
+    		'INSERT INTO "tweet" ("id", "hashtag", "createdat", "lat", "long", "place", "retweetcount", "text") 
+    			VALUES (:id, :hashtag, :createdat, :lat, :long, :place, :retweetcount, :text);',
+    		[
+	        	'id' => $tweet->id,
+		        'hashtag' => $tweet->hashtag,
+	    	    'createdat' => $tweet->createdAt,
+	    	    'lat' => $tweet->lat,
+	    	    'long' => $tweet->long,
+	    	    'place' => $tweet->place,
+	    	    'retweetcount' => $tweet->retweetCount,
+    	    	'text' => $tweet->text
+ 	   		]
+		);/*
 	if ($hasCoodinates && $isRetweet) {
 		$database->query(
     		'INSERT INTO "tweet" ("id", "hashtag", "createdat", "lat", "long", "place", "retweetcount", "text") 
@@ -99,11 +110,44 @@ foreach ($tweetsWithHashtags as $tweet) {
     	    	'text' => $tweet->text
  	   		]
 		);
-	}
+	}*/
 	$result = $database->applyBatch();
 }
+
+$tweets = $database->query('SELECT * FROM "tweet" ', []);
+$tweetsJSON = json_encode($tweets);
+
+$xml_tweet_info = new SimpleXMLElement("<?xml version=\"1.0\"?><tweet></tweet>");
+
+// function call to convert array to xml
+array_to_xml($tweets,$xml_tweet_info);
+
+$xml_tweet_info->asXML(dirname(__FILE__)."/tweet.xml") ;
+
 //$tweets = json_decode($response);
 
 //STREAMING Tweets by Keyword
 //$twitter->start(array('Apple', 'keyword2', 'etc'));
+
+
+
+
+function array_to_xml($student_info, &$xml_student_info) {
+    foreach($student_info as $key => $value) {
+        if(is_array($value)) {
+            if(!is_numeric($key)){
+                $subnode = $xml_student_info->addChild("$key");
+                array_to_xml($value, $subnode);
+            }
+            else{
+                $subnode = $xml_student_info->addChild("item$key");
+                array_to_xml($value, $subnode);
+            }
+        }
+        else {
+            $xml_student_info->addChild("$key",htmlspecialchars("$value"));
+        }
+    }
+}
+
 ?>

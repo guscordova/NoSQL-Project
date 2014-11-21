@@ -1,0 +1,252 @@
+x -<1
+x<-1
+x
+print(x)
+x
+msg <-"hello"
+msg
+ls()
+print(x, msg)
+print(x,x)
+x <-
+end
+x
+x <-1L
+x
+x <- INF
+x <- inf
+x <- 1/0
+x
+x <- Inf
+x
+ls()
+x ##eerer
+x <- 1:20
+x
+x <- 1:100000
+x
+clear
+cls
+x <- c(0.5, 0.6)
+x
+x <- c(1+0i, 3+4i)
+x
+x <- vector("numeric", lenght=10)
+x <- vector("numeric", length=10)
+x
+x <- (1, "a", "b")
+x <- c(1, "a", "b")
+x
+x <- c(1, "a", 1)
+x
+class(x)
+m <- matrix(nrow=5, ncol=2)
+m
+dim(m)
+attributes(m)
+cat(m)
+m
+m <- matrix(1:10,nrow=5, ncol=2)
+m
+m <- matrix(1:20,nrow=5, ncol=2)
+m
+dim(m) <- c(1,5)
+dim(m) <- c(1,50)
+dim(m) <- c(10,5)
+x <- c("yes", "no", "yes", "yes")
+x
+x <- factor(c("yes", "no", "yes", "yes"))
+x
+table(x)
+unclass(x)
+x
+is.nan(x)
+is.nan(nan)
+is.nan(NaN)
+is.nan(s)
+x <- list(2, "a", "b", TRUE)
+x
+x[[1]]
+x[1]
+x[[1]]
+class(x[[1]])
+install.packages("swirl")
+getwd()
+library(swirl)
+swirl()
+library(datasets)
+data(iris)
+iris
+iris$Species
+iris$Species = "virginica"
+library(datasets)#
+data(iris)
+iris
+iris$Species == "virginica"
+sapply(iris, mean)
+s <- split(iris, iris$Species)
+s
+lapply(s, function(x) colMeans(x[, c("Sepal.Length")]))
+lapply(s, function(x) colMeans(x[, c("Sepal.Length", "Sepal.Width")]))
+s
+s$virginica
+colMeans(iris)
+apply(iris, 1, mean)
+apply(iris[, 1:4], 1, mean)
+apply(iris[, 1:4], 2, mean)
+data(mtcars)
+mtcars
+sapply(mtcars, cyl, mean)
+tapply(mpg, cyl, mean)
+mean(mtcars$mpg, mtcars$cyl)
+with(mtcars, tapply(mpg, cyl, mean))
+sapply(mtcars, cyl, mean)
+apply(mtcars, 2, mean)
+mean(mtcars$mpg, mtcars$cyl)
+with(mtcars, tapply(hp, cyl, mean))
+hp <- with(mtcars, tapply(hp, cyl, mean))
+hp$4 - hp$8
+hp$4
+hp
+hp[1]
+hp[1] - hp[3]
+debug(ls)
+ls
+debug(ls)
+ls
+?ls
+n
+next
+n
+exit
+end
+debug(ls)
+ls
+ls(t)
+set.seed(1)
+rpois(5,2)
+library(dataset)
+library(datasets)
+rprof()
+Rprof()
+fit <- lm(y~ 1+2)
+fit <- lm(1,23)
+install.packages("KernSmooth R")
+library("KernSmooth R")
+library(sqldf)
+fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06pid.csv "
+download.file(fileUrl, destfile="./CleaningData_quiz2.csv", method="curl")
+acs <- read.csv("./CleaningData_quiz2.csv")
+sqldf("select pwgtp1 from acs where AGEP < 50")
+unique(acs$AGEP)
+sqldf("select distinct AGEP from acs")
+sqldf("select unique AGEP from acs")
+con <- url("http://biostat.jhsph.edu/~jleek/contact.html ")
+htmlCode <- readLines(con)
+close(con)
+htmlCode
+nchar?
+exit
+?nchar
+nchar(htmlCode)
+chars <- nchar(htmlCode)
+chars[10,20,30,100]
+chars[10]
+chars[20]
+chars[30]
+chars[100]
+fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fwksst8110.for "
+fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06pid.csv "
+fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fwksst8110.for "
+download.file(fileUrl, destfile="./CleaningData_quiz2.for", method="curl")
+data <- read.fwf("./CleaningData_quiz2.for")
+data <- read.fwf("./CleaningData_quiz2.for", widths = c(1,0, 2,3))
+data
+data <- read.fwf("./CleaningData_quiz2.for", widths = c(1,0, 2,3,2))
+data
+data <- read.fwf("./CleaningData_quiz2.for", widths = c(1,1,1,1,1))
+data
+data <- read.fwf("./CleaningData_quiz2.for", widths = c(9,-5,4,-1,3))
+data
+data <- read.fwf("./CleaningData_quiz2.for", widths = c(9,-5,4,-1,3))
+head(data)
+data <- read.fwf("./CleaningData_quiz2.for", widths = c(9,-5, 4, -1, 3, -5, 4, -1, 3, -5, 4, -1, 3, -5, 4, -1, 3, -5), header = FALSE, skip = 5)
+head(data)
+data <- read.fwf("./CleaningData_quiz2.for", widths = c(9,-5, 4, -1, 3, -5, 4, -1, 3, -5, 4, -1, 3, -5, 4, -1, 3, -5))
+head(data)
+data <- read.fwf("./CleaningData_quiz2.for", widths = c(9,-5, 8, -1, 3, -5, 4, -1, 3, -5, 4, -1, 3, -5, 4, -1, 3, -5))
+head(data)
+data <- read.fwf("./CleaningData_quiz2.for", widths = c(9,-5, 4, 4, 3, -5, 4, -1, 3, -5, 4, -1, 3, -5, 4, -1, 3, -5))
+head(data)
+data <- read.fwf("./CleaningData_quiz2.for", widths = c(-9,-5, -8, -5, 8, -5, -8, -5, -8))
+head(data)
+data <- read.fwf("./CleaningData_quiz2.for", widths = c(-9,-5, -8, -5, 9, -5, -8, -5, -8))
+head(data)
+data <- read.fwf("./CleaningData_quiz2.for", widths = c(-9,-5, -8, -5, -4, 5, -5, -8, -5, -8))
+head(data)
+data <- read.fwf("./CleaningData_quiz2.for", widths = c(-9,-5, -8, -5, -5, 4, -5, -8, -5, -8))
+head(data)
+data <- read.fwf("./CleaningData_quiz2.for", widths = c(-9,-5, -8, -5, -5, 4, -5, -8, -5, -8), header = FALSE)
+head(data)
+data <- read.fwf("./CleaningData_quiz2.for", widths = c(-9,-5, -8, -5, -5, 4, -5, -8, -5, -8), header = FALSE, skip=5)
+head(data)
+data <- read.fwf("./CleaningData_quiz2.for", widths = c(-9,-5, -8, -5, -5, 4, -5, -8, -5, -8), header = FALSE, skip=4)
+head(data)
+data <- read.fwf("./CleaningData_quiz2.for", widths = c(-9,-5, -8, -5, -5, 4, -5, -8, -5, -8), header = FALSE, skip=3)
+head(data)
+data <- read.fwf("./CleaningData_quiz2.for", widths = c(-9,-5, -8, -5, -5, 4, -5, -8, -5, -8), header = FALSE, skip=4)
+head(data)
+dataSet <- read.fwf(con2, widths = c(9,-5, 4, -1, 3, -5, 4, -1, 3, -5, 4, -1, 3, -5, 4, -1, 3, -5), header = FALSE, skip = 4)
+dataSet <- read.fwf("./CleaningData_quiz2.for", widths = c(9,-5, 4, -1, 3, -5, 4, -1, 3, -5, 4, -1, 3, -5, 4, -1, 3, -5), header = FALSE, skip = 4)
+head(dataSet)
+head(data)
+sum(dataSet$V4, na.rm = T)
+sum(data)
+sum(data, na.rm=T)
+data <- read.fwf("./CleaningData_quiz2.for", widths = c(-9,-5, -8, -5, 5, -4, -5, -8, -5, -8), header = FALSE, skip=4)
+head(data)
+sum(data)
+library(nlme)
+install.packages("lattice")
+library(lattice)
+xyplot(wieght ~ Time | Diet, BodyWeight)
+xyplot(weight ~ Time | Diet, BodyWeight)
+library(datasets)
+data(airquality)
+qplot(Wind, Ozone, data = airquality, facets = . ~ factor(Month))
+install.packages("ggplot")
+install.packages("ggplot2")
+library(ggplot2)
+qplot(Wind, Ozone, data = airquality, facets = . ~ factor(Month))
+airquality = transform(airquality, Month = factor(Month))#
+qplot(Wind, Ozone, data = airquality, facets = . ~ Month)
+library(XML)
+library(ggplot2)
+library(lubridate)
+doc <- xmlTreeParse("./tweet.xml",useInternal=TRUE)
+doc <- xmlTreeParse("./tweet.xml",useInternal=TRUE)
+data <- xmlToDataFrame(doc)
+data$createdat <- strptime(data$createdat, "%a %b %d %H:%M:%S %z %Y")
+times <- c(hms("12:00:00"), hms("13:00:00"), hms("14:00:00"), hms("15:00:00"), hms("16:00:00"), hms("17:00:00"), hms("18:00:00"), hms("19:00:00"), hms("20:00:00"), hms("21:00:00"), hms("22:00:00"), hms("23:00:00"), hms("00:00:00"), hms("01:00:00"), hms("02:00:00"), hms("03:00:00"), hms("04:00:00"), hms("05:00:00"), hms("06:00:00"), hms("07:00:00"), hms("08:00:00"), hms("09:00:00"), hms("10:00:00"), hms("11:00:00"))
+data$time <- cut(hour(data$createdat) + minute(data$createdat)/60, hour(times))
+data$count <- 1
+qplot(time, data = data[data$hashtag == "EPNrenuncia",])
+qplot(time, data = data[data$hashtag == "YaMeCansé",])
+qplot(time, data = data[data$hashtag == "YaMeCansé",], color=hashtag)
+qplot(time, data = head(data, n=10), color=hashtag)
+qplot(time, data = head(data, n=10), color=hashtag)
+qplot(time, data = data[data$hashtag == "YaMeCansé",], color=hashtag, fill=gear)
+qplot(time, data = data[data$hashtag == "YaMeCansé",], color=hashtag, fill=hashtag)
+qplot(time, data = data[data$hashtag == "YaMeCansé",], color=hashtag, fill=hashtag)
+qplot(time, data = head(data, n=10), fill=hashtag)
+qplot(time, data = head(data, n=10), fill=hashtag)
+qplot(time, data = data[data$hashtag == "YaMeCansé" && data$hashtag == "EPNrenuncia",], fill=hashtag)
+qplot(time, data = data[data$hashtag == "YaMeCansé" && data$hashtag == "EPNrenuncia",], fill=hashtag)
+qplot(time, data = data[data$hashtag == "YaMeCansé" & data$hashtag == "EPNrenuncia",], fill=hashtag)
+data[data$hashtag == "YaMeCansé" & data$hashtag == "EPNrenuncia",]
+data[(data$hashtag == "YaMeCansé" & data$hashtag == "EPNrenuncia"),]
+qplot(time, data = data[data$hashtag == "YaMeCansé" | data$hashtag == "EPNrenuncia",], fill=hashtag)
+data$hashtag
+qplot(time, data = data[data$hashtag == "YaMeCansé" | data$hashtag == "EPNrenuncia",] | data$hashtag == "Ayotzinapa",], fill=hashtag)
+qplot(time, data = data[data$hashtag == "YaMeCansé" | data$hashtag == "EPNrenuncia"| data$hashtag == "Ayotzinapa",], fill=hashtag)
+qplot(time, data = data[data$hashtag == "YaMeCansé" | data$hashtag == "EPNrenuncia" | data$hashtag == "Ayotzinapa",], fill=hashtag)
