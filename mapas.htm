@@ -9,12 +9,13 @@
     //<![CDATA[
 
     function load() {
-      var map = new google.maps.Map(document.getElementById("map"), {
-        center: new google.maps.LatLng(25.6750600, -100.3184600),
-        zoom: 8,
-        mapTypeId: 'roadmap'
-      });
-      var infoWindow = new google.maps.InfoWindow;
+	
+		var myLatlng = new google.maps.LatLng(25.6750600, -100.3184600);
+		var mapOptions = {
+			zoom: 8,
+			center: myLatlng
+		}
+		var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);	
 
       // Change this depending on the name of your PHP file
       downloadUrl("genpoints_twit.php", function(data) {
@@ -28,7 +29,6 @@
               parseFloat(markers[i].getAttribute("lng")));
           var titulo = name + " | " + address;
           var marker = new google.maps.Marker({
-            map: map,
             position: point,
 			title: titulo
           });
