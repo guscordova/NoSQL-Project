@@ -3,6 +3,12 @@
 // Include Class File
 require_once('Database.php');
 
+function prettyPrint($a) {
+    echo "<pre>";
+    print_r($a);
+    echo "</pre>";
+}
+
 function parseToXML($htmlStr)
 {
 $xmlStr=str_replace('<','&lt;',$htmlStr);
@@ -13,12 +19,7 @@ $xmlStr=str_replace("&",'&amp;',$xmlStr);
 return $xmlStr;
 }
 
-function prettyPrint($a) {
-    echo "<pre>";
-    print_r($a);
-    echo "</pre>";
-}
-database = new Database(['127.0.0.1:9042']);
+$database = new Database(['127.0.0.1:9042']);
 $database->connect();
 $database->setKeyspace('bdd');
 
