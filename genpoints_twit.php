@@ -44,18 +44,6 @@ foreach($tweets as $t)
   echo '/>';
 }
 
-/*
-while ($row = @mysql_fetch_assoc($result)){
-  // ADD TO XML DOCUMENT NODE
-  echo '<marker ';
-  echo 'name="' . parseToXML($row['name']) . '" ';
-  echo 'address="' . parseToXML($row['address']) . '" ';
-  echo 'lat="' . $row['lat'] . '" ';
-  echo 'lng="' . $row['lng'] . '" ';
-  echo 'type="' . $row['type'] . '" ';
-  echo '/>';
-}
-*/
 // End XML file
 echo '</markers>';
 
