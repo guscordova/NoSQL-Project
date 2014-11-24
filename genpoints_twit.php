@@ -18,7 +18,7 @@ $database->connect();
 $database->setKeyspace('bdd');
 
 // Arturo: Adaptar query Cassandra a como se desee
-$tweets = $database->query('SELECT * FROM "tweet" WHERE HASHTAG="YaMeCanse"', []);
+$tweets = $database->query('SELECT * FROM "tweet" WHERE HASHTAG=\'YaMeCanse\'', []);
 
 header("Content-type: text/xml");
 
