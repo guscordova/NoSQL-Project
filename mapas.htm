@@ -4,6 +4,13 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <title>Ejemplo PHP/Cassandra & Google Maps</title>
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>	
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4kxrm2DrkybcKnk41gozYIFlvTDMogt0"></script>
     <script type="text/javascript">
     //<![CDATA[
@@ -15,7 +22,7 @@
 			zoom: 8,
 			center: myLatlng
 		}
-		var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);	
+		var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);	
 
       // Change this depending on the name of your PHP file
       downloadUrl("genpoints_twit.php", function(data) {
@@ -62,7 +69,7 @@
   </head>
 
   <body onload="load()">
-    <div id="map" style="width: 500px; height: 300px"></div>
+    <div id="map-canvas"></div>
   </body>
 
 </html>
