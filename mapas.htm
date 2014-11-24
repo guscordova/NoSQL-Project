@@ -20,7 +20,7 @@
       downloadUrl("genpoints_twit.php", function(data) {
         var xml = data.responseXML;
         var markers = xml.documentElement.getElementsByTagName("marker");
-        for (var i = 0; i < markerssudo.length; i++) {
+        for (var i = 0; i < markers.length; i++) {
           var name = markers[i].getAttribute("name");
           var address = markers[i].getAttribute("address");
           var point = new google.maps.LatLng(
