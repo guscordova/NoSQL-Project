@@ -32,7 +32,7 @@ $response =  $twitter->performRequest($url,$latlonrad,$count);
 
 $json = json_decode($response, true);
 if ($json) {
-	print_r($json);
+	//print_r($json);
 }
 
 $map = new MapJSON();
