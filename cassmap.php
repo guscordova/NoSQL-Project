@@ -1,7 +1,5 @@
 <?php
-
-// Include Class File
-require_once('Database.php');
+require("phpsqlajax_dbinfo.php");
 
 function parseToXML($htmlStr)
 {
@@ -13,23 +11,31 @@ $xmlStr=str_replace("&",'&amp;',$xmlStr);
 return $xmlStr;
 }
 
-$database = new Database(['127.0.0.1:9042']);
-$database->connect();
-$database->setKeyspace('bdd');
+// Opens a connection to a MySQL server
+$connection=mysql_connect ('localhost', $username, $password);
+if (!$connection) {
+  die('Not connected : ' . mysql_error());
+}
 
-// Arturo: Adaptar query Cassandra a como se desee
-$tweets = $database->query('SELECT hashtag, place, lat, long FROM tweet WHERE HASHTAG=\'YaMeCanse\'', []);
+// Set the active MySQL database
+$db_selected = mysql_select_db($database, $connection);
+if (!$db_selected) {
+  die ('Can\'t use db : ' . mysql_error());
+}
+
+// Select all the rows in the markers table
+$query = "SELECT * FROM markers WHERE 1";
+$result = mysql_query($query);
+if (!$result) {
+  die('Invalid query: ' . mysql_error());
+}
 
 header("Content-type: text/xml");
 
-// Generar el XML que requiere Google Maps para mapear
+// Start XML file, echo parent node
 echo '<markers>';
 
-foreach($tweets[0] as $child) {
-   echo $child . "\n";
-}
 // Iterate through the rows, printing XML nodes for each
-/*
 while ($row = @mysql_fetch_assoc($result)){
   // ADD TO XML DOCUMENT NODE
   echo '<marker ';
@@ -40,7 +46,7 @@ while ($row = @mysql_fetch_assoc($result)){
   echo 'type="' . $row['type'] . '" ';
   echo '/>';
 }
-*/
+
 // End XML file
 echo '</markers>';
 
