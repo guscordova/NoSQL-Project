@@ -38,9 +38,9 @@ foreach($tweets as $t)
 {
   echo '<marker ';
   echo 'name="' . parseToXML($t['hashtag']) . '" ';
-  echo 'address="' . parseToXML($row['place']) . '" ';
-  echo 'lat="' . $row['lat'] . '" ';
-  echo 'lng="' . $row['long'] . '" ';
+  echo 'address="' . parseToXML($t['place']) . '" ';
+  echo 'lat="' . $t['lat'] . '" ';
+  echo 'lng="' . $t['long'] . '" ';
   echo '/>';
 }
 
