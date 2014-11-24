@@ -13,7 +13,12 @@ $xmlStr=str_replace("&",'&amp;',$xmlStr);
 return $xmlStr;
 }
 
-$database = new Database(['127.0.0.1:9042']);
+function prettyPrint($a) {
+    echo "<pre>";
+    print_r($a);
+    echo "</pre>";
+}
+database = new Database(['127.0.0.1:9042']);
 $database->connect();
 $database->setKeyspace('bdd');
 
@@ -25,9 +30,8 @@ header("Content-type: text/xml");
 // Generar el XML que requiere Google Maps para mapear
 echo '<markers>';
 
-foreach($tweets[0] as $child) {
-   echo $child . "\n";
-}
+prettyPrint($tweets)
+
 // Iterate through the rows, printing XML nodes for each
 /*
 while ($row = @mysql_fetch_assoc($result)){
