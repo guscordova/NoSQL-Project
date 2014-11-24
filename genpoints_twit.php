@@ -31,7 +31,7 @@ header("Content-type: text/xml");
 // Generar el XML que requiere Google Maps para mapear
 echo '<markers>';
 
-prettyPrint($tweets)
+prettyPrint($tweets);
 
 // Iterate through the rows, printing XML nodes for each
 /*
