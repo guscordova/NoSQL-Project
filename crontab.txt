@@ -1,1 +1,1 @@
-*/2 * * * * /usr/bin/php /home/aem/NoSQL-Project/read_twitter_ae.php > /dev/null
+*/2 * * * * /usr/bin/php /home/aem/NoSQL-Project/read_twitter.php > /dev/null
