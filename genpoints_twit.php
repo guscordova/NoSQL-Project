@@ -31,9 +31,19 @@ header("Content-type: text/xml");
 // Generar el XML que requiere Google Maps para mapear
 echo '<markers>';
 
-prettyPrint($tweets);
+// prettyPrint($tweets);
 
-// Iterate through the rows, printing XML nodes for each
+// Iterar el arreglo para generar el XML que pide GoogleMaps
+foreach($tweets as $t)
+{
+  echo '<marker ';
+  echo 'name="' . parseToXML($t['hashtag']) . '" ';
+  echo 'address="' . parseToXML($row['place']) . '" ';
+  echo 'lat="' . $row['lat'] . '" ';
+  echo 'lng="' . $row['long'] . '" ';
+  echo '/>';
+}
+
 /*
 while ($row = @mysql_fetch_assoc($result)){
   // ADD TO XML DOCUMENT NODE
