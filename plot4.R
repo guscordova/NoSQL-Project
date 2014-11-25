@@ -1,3 +1,4 @@
+#top n de tweets agrupados por hashtag
 plot4 <- function(top = 10) {
    library(XML)
    library(ggplot2)
