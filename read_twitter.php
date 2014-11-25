@@ -24,7 +24,8 @@ $url = 'https://api.twitter.com/1.1/search/tweets.json';
 //Latitud, Longitud y Radio
 // Monterrey lat 25.6750600 lon -100.3184600
 $latlonrad = '25.6750600,-100.3184600,300mi';
-
+//$i = 0;
+//while ($i < 10) {
 $count = '100'; 
 $twitter = new OAuthTwitter($settings);
 $response =  $twitter->performRequest($url,$latlonrad,$count);
@@ -113,7 +114,8 @@ foreach ($tweetsWithHashtags as $tweet) {
 	}*/
 	$result = $database->applyBatch();
 }
-
+//$i++;
+//}
 $tweets = $database->query('SELECT * FROM "tweet" ', []);
 $tweetsJSON = json_encode($tweets);
 
@@ -132,20 +134,20 @@ $xml_tweet_info->asXML(dirname(__FILE__)."/tweet.xml") ;
 
 
 
-function array_to_xml($student_info, &$xml_student_info) {
-    foreach($student_info as $key => $value) {
+function array_to_xml($tweet_info, &$xml_tweet_info) {
+    foreach($tweet_info as $key => $value) {
         if(is_array($value)) {
             if(!is_numeric($key)){
-                $subnode = $xml_student_info->addChild("$key");
+                $subnode = $xml_tweet_info->addChild("$key");
                 array_to_xml($value, $subnode);
             }
             else{
-                $subnode = $xml_student_info->addChild("item$key");
+                $subnode = $xml_tweet_info->addChild("item$key");
                 array_to_xml($value, $subnode);
             }
         }
         else {
-            $xml_student_info->addChild("$key",htmlspecialchars("$value"));
+            $xml_tweet_info->addChild("$key",htmlspecialchars("$value"));
         }
     }
 }
