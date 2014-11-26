@@ -1,5 +1,5 @@
 #numero de tweets en un rango de fecha
-plot7 <- function(startDate = "2014-11-20", endDate = "2014-11-24") {
+plot7 <- function(startDate = "2014-11-19", endDate = Sys.Date()) {
    library(XML)
    library(ggplot2)
    library(lubridate)
@@ -9,8 +9,13 @@ plot7 <- function(startDate = "2014-11-20", endDate = "2014-11-24") {
    data$date <- as.Date(data$createdat,format = "%Y-%m-%d") 
    data <- data[as.Date(data$createdat,format = "%Y-%m-%d") >= as.Date(startDate) &
                    as.Date(data$createdat,format = "%Y-%m-%d") <= as.Date(endDate) ,]
-   q <- qplot(date, data=data)
-   q
+   png(filename = "plot7.png", width = 680, height = 680, units = "px")
+   print(qplot(date, data=data,
+               main=paste("Tweets entre el dia", 
+                          format(as.Date(startDate), format="%d %b %Y"), "y",
+                          format(as.Date(endDate), format="%d %b %Y")),
+               xlab="Fecha", ylab="Total"))
+   dev.off();
 }
 
 
