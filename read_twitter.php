@@ -8,8 +8,8 @@ require_once('Database.php');
 //Set Access Tokens
 //How to Generate Access Tokens: http://iag.me/socialmedia/how-to-create-a-twitter-app-in-8-easy-steps/
 $settings = array(
-    'consumer_key' => "Y8t0nHfuUnuTs1dvIi7UayjyJ",
-    'consumer_secret' => "5kYbL192weOnZAnHtcceuchZM5x662oQEnOtmIzD3xlLdb1e4w",
+    'consumer_key' => "g6k2qCckBK2ChuPVSBnHaNLnY",
+    'consumer_secret' => "dHZRSoVFzcHEE2ou5PLe3n6ceEKUdecQOcBYn7O5ITKj4vkAY3",
     'token' => "",
     'token_secret' => ""
 );
@@ -24,8 +24,8 @@ $url = 'https://api.twitter.com/1.1/search/tweets.json';
 //Latitud, Longitud y Radio
 // Monterrey lat 25.6750600 lon -100.3184600
 $latlonrad = '25.6750600,-100.3184600,300mi';
-//$i = 0;
-//while ($i < 10) {
+$i = 0;
+while ($i < 200) {
 $count = '100'; 
 $twitter = new OAuthTwitter($settings);
 $response =  $twitter->performRequest($url,$latlonrad,$count);
@@ -114,42 +114,9 @@ foreach ($tweetsWithHashtags as $tweet) {
 	}*/
 	$result = $database->applyBatch();
 }
-//$i++;
-//}
-$tweets = $database->query('SELECT * FROM "tweet" ', []);
-$tweetsJSON = json_encode($tweets);
-
-$xml_tweet_info = new SimpleXMLElement("<?xml version=\"1.0\"?><tweet></tweet>");
-
-// function call to convert array to xml
-array_to_xml($tweets,$xml_tweet_info);
-
-$xml_tweet_info->asXML(dirname(__FILE__)."/tweet.xml") ;
-
-//$tweets = json_decode($response);
-
-//STREAMING Tweets by Keyword
-//$twitter->start(array('Apple', 'keyword2', 'etc'));
-
-
-
-
-function array_to_xml($tweet_info, &$xml_tweet_info) {
-    foreach($tweet_info as $key => $value) {
-        if(is_array($value)) {
-            if(!is_numeric($key)){
-                $subnode = $xml_tweet_info->addChild("$key");
-                array_to_xml($value, $subnode);
-            }
-            else{
-                $subnode = $xml_tweet_info->addChild("item$key");
-                array_to_xml($value, $subnode);
-            }
-        }
-        else {
-            $xml_tweet_info->addChild("$key",htmlspecialchars("$value"));
-        }
-    }
+$i++;
 }
+
+
 
 ?>
